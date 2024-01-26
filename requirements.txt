@@ -154,9 +154,6 @@ python-dateutil==2.8.2
 python-json-logger==2.0.7
 pytz==2023.3.post1
 PyWavelets==1.4.1
-pywin32==306
-pywin32-ctypes==0.2.2
-pywinpty==2.0.12
 PyYAML==6.0.1
 pyzmq==25.1.2
 referencing==0.32.0
@@ -221,5 +218,4 @@ webcolors==1.13
 webencodings==0.5.1
 websocket-client==1.7.0
 wheel==0.41.2
-win-inet-pton==1.1.0
 zipp==3.17.0
