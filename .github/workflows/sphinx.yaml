@@ -5,21 +5,26 @@ on:
     branches: [main]
 
 jobs:
-  doc:
-    docker:
-      - image: cimg/python:3.9.18
-
-    environment:
-      - MKL_NUM_THREADS: 2
-      - OPENBLAS_NUM_THREADS: 2
-      - CONDA_ENV_NAME: testenv
-      - LOCK_FILE: build_tools/circle/doc_linux-64_conda.lock
-      # Make sure that we fail if the documentation build generates warnings
-      - SKLEARN_DOC_BUILD_WARNINGS_AS_ERRORS: 'true'
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+
+      - name: Install docs dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -v --no-use-pep517 --no-build-isolation -e .
+          python -c "import sklearn; sklearn.show_versions()"
 
       - name: Make the Sphinx docs
         run: |
