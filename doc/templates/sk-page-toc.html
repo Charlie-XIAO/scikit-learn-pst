@@ -1,0 +1,25 @@
+{# Displays the in-page toc; should be used only for API pages. #}
+{# Modified based on: https://github.com/pydata/pydata-sphinx-theme/blob/8cf45f835bfdafc5f3821014a18f3b7e0fc2d44b/src/pydata_sphinx_theme/theme/pydata_sphinx_theme/components/page-toc.html #}
+
+{# Determine which type of in-page toc to get. `generate_toc_html` is implemented by #}
+{# pydata-sphinx-theme, vendored from the reference above. `get_api_pagetoc` is #}
+{# implemented in `sphinxext/add_api_pagetoc_functions.py`. #}
+
+{%- set use_api_page_toc = meta is defined and meta is not none and "use_api_page_toc" in meta -%}
+{%- if use_api_page_toc -%}
+  {%- set page_toc = get_api_pagetoc() -%}
+{%- else -%}
+  {%- set page_toc = generate_toc_html() -%}
+{%- endif -%}
+
+{%- if page_toc | length >= 1 %}
+{%- set page_navigation_heading_id = unique_html_id("pst-page-navigation-heading") -%}
+  <div
+    id="{{ page_navigation_heading_id }}"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> {{ _("On this page") }}
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="{{ page_navigation_heading_id }}">
+    {{ page_toc }}
+  </nav>
+{%- endif %}

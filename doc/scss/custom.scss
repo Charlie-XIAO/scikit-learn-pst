@@ -1,0 +1,232 @@
+/**
+ * This is a general styling sheet.
+ * It should be used for customizations that affect multiple pages.
+ */
+
+/* Global */
+
+code.literal {
+  border: 0;
+}
+
+/* Primary sidebar */
+
+.bd-sidebar-primary {
+  width: 22.5%;
+  min-width: 16rem;
+
+  // The version switcher button in the sidebar is ill-styled
+  button.version-switcher__button {
+    margin-bottom: unset;
+    margin-left: 0.3rem;
+    font-size: 1rem;
+  }
+
+  // The section navigation part is to close to the right boundary (originally an even
+  // larger negative right margin was used)
+  nav.bd-links {
+    margin-right: -0.5rem;
+  }
+}
+
+/* Article content */
+
+.bd-article {
+  h1 {
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  // Avoid changing the aspect ratio of images; add some padding so that at least
+  // there is some space between image and background in dark mode
+  img {
+    height: unset !important;
+    padding: 1%;
+  }
+
+  // Override the pydata-sphinx-theme styling of .. topic:: directives
+  div.topic,
+  aside.topic {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none !important;
+
+    p {
+      color: var(--pst-color-text-base) !important;
+    }
+
+    ul.simple {
+      padding-left: 2rem;
+    }
+  }
+}
+
+/* Version switcher */
+
+.version-switcher__menu a.list-group-item.sk-avail-docs-link {
+  display: flex;
+  align-items: center;
+
+  &:after {
+    content: var(--pst-icon-external-link);
+    font: var(--fa-font-solid);
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+}
+
+/* scikit-learn buttons */
+
+a.btn {
+  &.sk-btn-orange {
+    background-color: var(--sk-orange-tint-1);
+    color: black !important;
+
+    &:hover {
+      background-color: var(--sk-orange-tint-3);
+    }
+  }
+
+  &.sk-btn-cyan {
+    background-color: var(--sk-cyan-shades-2);
+    color: white !important;
+
+    &:hover {
+      background-color: var(--sk-cyan-shades-1);
+    }
+  }
+}
+
+/* scikit-learn dropdowns */
+
+details.sk-dropdown {
+  margin: 1.5625em auto;
+  padding: 0 0.6rem 0.8rem;
+  border-left: 0.2rem solid;
+  border-radius: 0.25rem;
+  border-color: var(--pst-color-border);
+  background-color: var(--pst-color-on-background);
+  box-shadow: 0 0.2rem 0.5rem var(--pst-color-shadow),
+    0 0 0.0625rem var(--pst-color-shadow);
+
+  &:hover > summary.sk-summary-title > a.headerlink {
+    visibility: visible;
+  }
+
+  &[open] > summary.sk-summary-title > div.sk-summary-down {
+    visibility: hidden;
+  }
+
+  &:not([open]) > summary.sk-summary-title > div.sk-summary-up {
+    visibility: hidden;
+  }
+
+  > summary.sk-summary-title {
+    margin: 0 -0.6rem -0.8rem -0.6rem;
+    padding: 0.4rem 0.6rem 0.4rem 2.5rem;
+    list-style: none;
+    font-weight: 600;
+    background-color: var(--pst-color-surface);
+    position: relative;
+
+    &::after {
+      font: var(--fa-font-solid);
+      content: "\f3c1";
+      left: 0.75rem;
+      line-height: inherit;
+      position: absolute;
+    }
+
+    > a.headerlink {
+      font-size: 1rem;
+    }
+
+    > div.sk-summary-down,
+    > div.sk-summary-up {
+      height: 1rem;
+      width: 1rem;
+      right: 1rem;
+      top: 0.4rem;
+      position: absolute;
+    }
+  }
+
+  > div.sk-dropdown-content {
+    margin-bottom: -1rem;
+    padding: 0.5rem;
+    padding-bottom: 0;
+  }
+
+  &.warning {
+    border-color: var(--pst-color-warning);
+
+    > summary.sk-summary-title {
+      background-color: var(--pst-color-warning-bg);
+
+      &::after {
+        color: var(--pst-color-warning);
+        content: var(--pst-icon-admonition-warning);
+      }
+    }
+  }
+}
+
+/* scikit-learn avatar grid, see build_tools/generate_authors_table.py */
+
+.sk-authors-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  > div {
+    width: 100px;
+    margin: 5px;
+    font-size: 0.9rem;
+  }
+}
+
+/* scikit-learn text-image grid, used in testimonials and sponsors pages */
+
+@mixin sk-text-image-grid($img-max-height) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  div.text-box,
+  div.image-box {
+    width: 50%;
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  div.text-box .annotation {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--pst-color-text-muted);
+  }
+
+  div.image-box {
+    text-align: center;
+
+    img {
+      max-height: $img-max-height;
+      max-width: 50%;
+    }
+  }
+}
+
+div.sk-text-image-grid-small {
+  @include sk-text-image-grid(60px);
+}
+
+div.sk-text-image-grid-large {
+  @include sk-text-image-grid(100px);
+}
