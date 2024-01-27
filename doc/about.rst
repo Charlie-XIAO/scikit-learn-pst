@@ -457,6 +457,18 @@ College <https://pbs.dartmouth.edu/>`_).
 The following organizations funded the scikit-learn consortium at Inria in
 the past:
 
+.. |image-subgrid| raw:: html
+
+   <div class="image-subgrid row align-items-center justify-content center">
+
+.. |image-subgrid-item| raw:: html
+
+   <div class="image-subgrid-item col-sm-3 col-6">
+
+.. |end-div| raw:: html
+
+   </div>
+
 .. raw:: html
 
    <style>
@@ -465,30 +477,25 @@ the past:
        max-width: 90%;
      }
 
-     div.image-subgrid div.row div.container {
+     div.image-subgrid div.image-subgrid-item {
        text-align: center;
+       margin: 0.5rem 0;
      }
    </style>
 
-.. container:: image-subgrid
-
-   .. container:: row align-items-center justify-content-center
-
-      .. container:: col-lg-3 col-md-6 col-12
-
-         |bcg|
-
-      .. container:: col-lg-3 col-md-6 col-12
-
-         |microsoft|
-
-      .. container:: col-lg-3 col-md-6 col-12
-
-         |fujitsu|
-
-      .. container:: col-lg-3 col-md-6 col-12
-
-         |aphp|
+|image-subgrid|
+|image-subgrid-item|
+|bcg|
+|end-div|
+|image-subgrid-item|
+|microsoft|
+|end-div|
+|image-subgrid-item|
+|fujitsu|
+|end-div|
+|image-subgrid-item|
+|aphp|
+|end-div|
 
 
 Sprints
