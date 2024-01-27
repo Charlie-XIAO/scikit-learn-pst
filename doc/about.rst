@@ -240,24 +240,24 @@ François Goupil, Guillaume Lemaitre, Jérémie du Boisberranger, and Olivier Gr
 .. raw:: html
 
    <style>
-     table.image-subgrid tbody {
+     table.image-subtable tbody {
        border-color: var(--pst-color-border);
      }
 
-     table.image-subgrid td {
+     table.image-subtable td {
        width: 50%;
        vertical-align: middle;
        text-align: center;
      }
 
-     table.image-subgrid td img {
+     table.image-subtable td img {
        max-height: 40px !important;
        max-width: 90% !important;
      }
    </style>
 
 .. table::
-   :class: image-subgrid
+   :class: image-subtable
 
    +----------+-----------+
    |       |chanel|       |
@@ -460,28 +460,35 @@ the past:
 .. raw:: html
 
    <style>
-     table.image-row tbody {
-       border: 0;
-     }
-
-     table.image-row td {
-       width: 25%;
-       text-align: center;
-       vertical-align: middle;
-     }
-
-     table.image-row td img {
+     div.image-subgrid img {
        max-height: 50px;
        max-width: 90%;
      }
+
+     div.image-subgrid div.row div.container {
+       text-align: center;
+     }
    </style>
 
-.. table::
-   :class: image-row
+.. container:: image-subgrid
 
-   +----------+---------------+-------------+----------+
-   |  |bcg|   |  |microsoft|  |  |fujitsu|  |  |aphp|  |
-   +----------+---------------+-------------+----------+
+   .. container:: row align-items-center justify-content-center
+
+      .. container:: col-lg-3 col-md-6 col-12
+
+         |bcg|
+
+      .. container:: col-lg-3 col-md-6 col-12
+
+         |microsoft|
+
+      .. container:: col-lg-3 col-md-6 col-12
+
+         |fujitsu|
+
+      .. container:: col-lg-3 col-md-6 col-12
+
+         |aphp|
 
 
 Sprints
