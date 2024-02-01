@@ -33,7 +33,7 @@ Features            real, between 0 and 255
 =================   =======================
 
 |details-start|
-Usage
+**Usage**
 |details-split|
 
 ``scikit-learn`` provides two loaders that will automatically download,

@@ -28,7 +28,7 @@ Features                  text
 =================   ==========
 
 |details-start|
-Usage
+**Usage**
 |details-split|
 
 The :func:`sklearn.datasets.fetch_20newsgroups` function is a data
@@ -93,7 +93,7 @@ list of the categories to load to the
 |details-end|
 
 |details-start|
-Converting text to vectors
+**Converting text to vectors**
 |details-split|
 
 In order to feed predictive or clustering models with the text data,
@@ -129,7 +129,7 @@ returns ready-to-use token counts features instead of file names.
 |details-end|
 
 |details-start|
-Filtering text for more realistic training
+**Filtering text for more realistic training**
 |details-split|
 
 It is easy for a classifier to overfit on particular things that appear in the

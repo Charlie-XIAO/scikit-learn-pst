@@ -240,7 +240,7 @@ Chapter 4 of [RW2006]_. For guidance on how to best combine different kernels,
 we refer to [Duv2014]_.
 
 |details-start|
-Gaussian Process Kernel API
+**Gaussian Process Kernel API**
 |details-split|
 
 The main usage of a :class:`Kernel` is to compute the GP's covariance between
@@ -389,7 +389,7 @@ The :class:`Matern` kernel is a stationary kernel and a generalization of the
 the smoothness of the resulting function. It is parameterized by a length-scale parameter :math:`l>0`, which can either be a scalar (isotropic variant of the kernel) or a vector with the same number of dimensions as the inputs :math:`x` (anisotropic variant of the kernel).
 
 |details-start|
-Mathematical implementation of Matérn kernel
+**Mathematical implementation of Matérn kernel**
 |details-split|
 
 The kernel is given by:

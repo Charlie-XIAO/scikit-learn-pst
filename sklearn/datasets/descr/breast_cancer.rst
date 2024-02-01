@@ -105,7 +105,7 @@ ftp ftp.cs.wisc.edu
 cd math-prog/cpo-dataset/machine-learn/WDBC/
 
 |details-start|
-References
+**References**
 |details-split|
 
 - W.N. Street, W.H. Wolberg and O.L. Mangasarian. Nuclear feature extraction

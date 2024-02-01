@@ -1,3 +1,7 @@
+.. Places parent toc into the sidebar
+
+:parenttoc: True
+
 Parallelism, resource management, and configuration
 ===================================================
 

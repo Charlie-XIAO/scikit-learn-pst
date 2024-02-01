@@ -1,5 +1,8 @@
 .. _ml_map:
 
+
+.. include:: ../../includes/big_toc_css.rst
+
 Choosing the right estimator
 =======================================================
 

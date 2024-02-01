@@ -131,7 +131,7 @@ distances between all points.  Isomap can be performed with the object
    :scale: 50
 
 |details-start|
-Complexity
+**Complexity**
 |details-split|
 
 The Isomap algorithm comprises three stages:
@@ -192,7 +192,7 @@ Locally linear embedding can be performed with function
    :scale: 50
 
 |details-start|
-Complexity
+**Complexity**
 |details-split|
 
 The standard LLE algorithm comprises three stages:
@@ -249,7 +249,7 @@ It requires ``n_neighbors > n_components``.
    :scale: 50
 
 |details-start|
-Complexity
+**Complexity**
 |details-split|
 
 The MLLE algorithm comprises three stages:
@@ -302,7 +302,7 @@ It requires ``n_neighbors > n_components * (n_components + 3) / 2``.
    :scale: 50
 
 |details-start|
-Complexity
+**Complexity**
 |details-split|
 
 The HLLE algorithm comprises three stages:
@@ -349,7 +349,7 @@ function :func:`spectral_embedding` or its object-oriented counterpart
 :class:`SpectralEmbedding`.
 
 |details-start|
-Complexity
+**Complexity**
 |details-split|
 
 The Spectral Embedding (Laplacian Eigenmaps) algorithm comprises three stages:
@@ -400,7 +400,7 @@ tangent spaces to learn the embedding.  LTSA can be performed with function
    :scale: 50
 
 |details-start|
-Complexity
+**Complexity**
 |details-split|
 
 The LTSA algorithm comprises three stages:
@@ -468,7 +468,7 @@ stress, is then defined by :math:`\sum_{i < j} d_{ij}(X) - \hat{d}_{ij}(X)`
 
 
 |details-start|
-Metric MDS
+**Metric MDS**
 |details-split|
 
 The simplest metric :class:`MDS` model, called *absolute MDS*, disparities are defined by
@@ -481,7 +481,7 @@ Most commonly, disparities are set to :math:`\hat{d}_{ij} = b S_{ij}`.
 |details-end|
 
 |details-start|
-Nonmetric MDS
+**Nonmetric MDS**
 |details-split|
 
 Non metric :class:`MDS` focuses on the ordination of the data. If
@@ -576,7 +576,7 @@ The disadvantages to using t-SNE are roughly:
    :scale: 50
 
 |details-start|
-Optimizing t-SNE
+**Optimizing t-SNE**
 |details-split|
 
 The main purpose of t-SNE is visualization of high-dimensional data. Hence,
@@ -630,7 +630,7 @@ as interactive plots to explore the effects of different parameters.
 |details-end|
 
 |details-start|
-Barnes-Hut t-SNE
+**Barnes-Hut t-SNE**
 |details-split|
 
 The Barnes-Hut t-SNE that has been implemented here is usually much slower than

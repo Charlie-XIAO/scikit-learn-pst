@@ -684,7 +684,7 @@ We are glad to accept any sort of documentation:
   `doc/ <https://github.com/scikit-learn/scikit-learn/tree/main/doc>`_.
 
 |details-start|
-Guidelines for writing docstrings
+**Guidelines for writing docstrings**
 |details-split|
 
 * When documenting the parameters and attributes, here is a list of some
@@ -753,7 +753,7 @@ Guidelines for writing docstrings
 |details-end|
 
 |details-start|
-Guidelines for writing the user guide and other reStructuredText documents
+**Guidelines for writing the user guide and other reStructuredText documents**
 |details-split|
 
 It is important to keep a good compromise between mathematical and algorithmic
@@ -790,7 +790,7 @@ details, and give intuition to the reader on what the algorithm does.
   syntax::
 
     |details-start|
-    Dropdown title
+    **Dropdown title**
     |details-split|
 
     Dropdown content.
@@ -800,7 +800,7 @@ details, and give intuition to the reader on what the algorithm does.
   The snippet above will result in the following dropdown:
 
   |details-start|
-  Dropdown title
+  **Dropdown title**
   |details-split|
 
   Dropdown content.
@@ -830,7 +830,7 @@ details, and give intuition to the reader on what the algorithm does.
 
 
 |details-start|
-Guidelines for writing references
+**Guidelines for writing references**
 |details-split|
 
 * When bibliographic references are available with `arxiv <https://arxiv.org/>`_

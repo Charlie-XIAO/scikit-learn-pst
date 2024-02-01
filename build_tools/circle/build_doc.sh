@@ -190,7 +190,7 @@ export OMP_NUM_THREADS=1
 if [[ "$CIRCLE_BRANCH" =~ ^main$ && -z "$CI_PULL_REQUEST" ]]
 then
     # List available documentation versions if on main
-    python build_tools/circle/list_versions.py --json-loc doc/versions.json > doc/versions.rst
+    python build_tools/circle/list_versions.py > doc/versions.rst
 fi
 
 
@@ -244,7 +244,7 @@ then
     (
     echo '<html><body><ul>'
     echo "$affected" | sed 's|.*|<li><a href="&">&</a> [<a href="https://scikit-learn.org/dev/&">dev</a>, <a href="https://scikit-learn.org/stable/&">stable</a>]</li>|'
-    echo '</ul><p>General: <a href="index.html">Home</a> | <a href="api/index.html">API Reference</a> | <a href="auto_examples/index.html">Examples</a></p>'
+    echo '</ul><p>General: <a href="index.html">Home</a> | <a href="modules/classes.html">API Reference</a> | <a href="auto_examples/index.html">Examples</a></p>'
     echo '<strong>Sphinx Warnings in affected files</strong><ul>'
     echo "$warnings" | sed 's/\/home\/circleci\/project\//<li>/g'
     echo '</ul></body></html>'

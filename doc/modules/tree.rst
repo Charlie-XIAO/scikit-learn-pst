@@ -147,7 +147,7 @@ Once trained, you can plot the tree with the :func:`plot_tree` function::
    :align: center
 
 |details-start|
-Alternative ways to export trees
+**Alternative ways to export trees**
 |details-split|
 
 We can also export the tree in `Graphviz
@@ -312,7 +312,7 @@ the lower half of those faces.
   * :ref:`sphx_glr_auto_examples_miscellaneous_plot_multioutput_face_completion.py`
 
 |details-start|
-References
+**References**
 |details-split|
 
 * M. Dumont et al,  `Fast multi-class image annotation with random subwindows
@@ -413,7 +413,7 @@ What are all the various decision tree algorithms and how do they differ
 from each other? Which one is implemented in scikit-learn?
 
 |details-start|
-Various decision tree algorithms
+**Various decision tree algorithms**
 |details-split|
 
 ID3_ (Iterative Dichotomiser 3) was developed in 1986 by Ross Quinlan.
@@ -516,7 +516,7 @@ Log Loss or Entropy:
     H(Q_m) = - \sum_k p_{mk} \log(p_{mk})
 
 |details-start|
-Shannon entropy
+**Shannon entropy**
 |details-split|
 
 The entropy criterion computes the Shannon entropy of the possible classes. It
@@ -690,7 +690,7 @@ be pruned. This process stops when the pruned tree's minimal
     * :ref:`sphx_glr_auto_examples_tree_plot_cost_complexity_pruning.py`
 
 |details-start|
-References
+**References**
 |details-split|
 
 .. [BRE] L. Breiman, J. Friedman, R. Olshen, and C. Stone. Classification

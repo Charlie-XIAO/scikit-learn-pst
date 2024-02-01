@@ -214,7 +214,7 @@ alpha parameter, the fewer features selected.
 .. _compressive_sensing:
 
 |details-start|
-L1-recovery and compressive sensing
+**L1-recovery and compressive sensing**
 |details-split|
 
 For a good choice of alpha, the :ref:`lasso` can fully recover the
@@ -300,7 +300,7 @@ with *all* the features and greedily *remove* features from the set. The
 `direction` parameter controls whether forward or backward SFS is used.
 
 |details-start|
-Detail on Sequential Feature Selection
+**Detail on Sequential Feature Selection**
 |details-split|
 
 In general, forward and backward selection do not yield equivalent results.

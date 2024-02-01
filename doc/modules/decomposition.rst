@@ -322,7 +322,7 @@ eigensolvers can provide speedup with very low precision loss.
 
 
 |details-start|
-Eigensolvers
+**Eigensolvers**
 |details-split|
 
 The optional parameter ``eigen_solver='randomized'`` can be used to
@@ -391,7 +391,7 @@ are subtracted from the feature values,
 truncated SVD on the resulting matrix is equivalent to PCA.
 
 |details-start|
-About truncated SVD and latent semantic analysis (LSA)
+**About truncated SVD and latent semantic analysis (LSA)**
 |details-split|
 
 When truncated SVD is applied to term-document matrices
@@ -901,7 +901,7 @@ be continuously extended to the definitions of :math:`d_{KL}` and :math:`d_{IS}`
 respectively.
 
 |details-start|
-NMF implemented solvers
+**NMF implemented solvers**
 |details-split|
 
 :class:`NMF` implements two solvers, using Coordinate Descent ('cd') [5]_, and
@@ -1022,7 +1022,7 @@ The goal of LDA is to use the observed words to infer the hidden topic
 structure.
 
 |details-start|
-Details on modeling text corpora
+**Details on modeling text corpora**
 |details-split|
 
 When modeling text corpora, the model assumes the following generative process

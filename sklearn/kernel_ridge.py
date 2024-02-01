@@ -1,4 +1,4 @@
-"""The :mod:`sklearn.kernel_ridge` module implements kernel ridge regression."""
+"""Module :mod:`sklearn.kernel_ridge` implements kernel ridge regression."""
 
 # Authors: Mathieu Blondel <mathieu@mblondel.org>
 #          Jan Hendrik Metzen <jhm@informatik.uni-bremen.de>

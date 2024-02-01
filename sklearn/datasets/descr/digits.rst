@@ -33,7 +33,7 @@ L. Wilson, NIST Form-Based Handprint Recognition System, NISTIR 5469,
 1994.
 
 |details-start|
-References
+**References**
 |details-split|
 
 - C. Kaynak (1995) Methods of Combining Multiple Classifiers and Their

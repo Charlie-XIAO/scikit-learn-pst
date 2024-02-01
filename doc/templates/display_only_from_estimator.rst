@@ -3,9 +3,7 @@
     is added before the :mod: directive. Otherwise, the rendering will show as a
     paragraph instead of a header.
 
-:use_api_page_toc:
-
-{{objname}}
+:mod:`{{module}}`.{{objname}}
 {{ underline }}==============
 
 .. currentmodule:: {{ module }}
@@ -14,3 +12,7 @@
 
 .. include:: {{module}}.{{objname}}.examples
 .. include:: {{module}}.{{objname}}.from_estimator.examples
+
+.. raw:: html
+
+    <div class="clearer"></div>

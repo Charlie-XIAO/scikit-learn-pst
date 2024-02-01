@@ -212,7 +212,7 @@ example `cv=10` for 10-fold cross-validation, rather than Leave-One-Out
 Cross-Validation.
 
 |details-start|
-References
+**References**
 |details-split|
 
 * "Notes on Regularized Least Squares", Rifkin & Lippert (`technical report
@@ -274,7 +274,7 @@ computes the coefficients along the full path of possible values.
       :ref:`l1_feature_selection`.
 
 |details-start|
-References
+**References**
 |details-split|
 
 The following two references explain the iterations
@@ -361,7 +361,7 @@ section, we give more information regarding the criterion computed in
 scikit-learn.
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 The AIC criterion is defined as:
@@ -467,7 +467,7 @@ the MultiTaskLasso are full columns.
 
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 Mathematically, it consists of a linear model trained with a mixed
@@ -530,7 +530,7 @@ The class :class:`ElasticNetCV` can be used to set the parameters
   * :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_coordinate_descent_path.py`
 
 |details-start|
-References
+**References**
 |details-split|
 
 The following two references explain the iterations
@@ -648,7 +648,7 @@ is to retrieve the path with one of the functions :func:`lars_path`
 or :func:`lars_path_gram`.
 
 |details-start|
-Mathematical formulation
+**Mathematical formulation**
 |details-split|
 
 The algorithm is similar to forward stepwise regression, but instead
@@ -704,7 +704,7 @@ previously chosen dictionary elements.
  * :ref:`sphx_glr_auto_examples_linear_model_plot_omp.py`
 
 |details-start|
-References
+**References**
 |details-split|
 
 * https://www.cs.technion.ac.il/~ronrubin/Publications/KSVD-OMP-v2.pdf
@@ -736,7 +736,7 @@ variable to be estimated from the data.
 To obtain a fully probabilistic model, the output :math:`y` is assumed
 to be Gaussian distributed around :math:`X w`:
 
-.. math::  p(y|X,w,\alpha) = \mathcal{N}(y|X w,\alpha)
+.. math::  p(y|X,w,\alpha) = \mathcal{N}(y|X w,\alpha^{-1})
 
 where :math:`\alpha` is again treated as a random variable that is to be
 estimated from the data.
@@ -753,7 +753,7 @@ The disadvantages of Bayesian regression include:
 - Inference of the model can be time consuming.
 
 |details-start|
-References
+**References**
 |details-split|
 
 * A good introduction to Bayesian methods is given in C. Bishop: Pattern
@@ -824,7 +824,7 @@ is more robust to ill-posed problems.
  * :ref:`sphx_glr_auto_examples_linear_model_plot_bayesian_ridge_curvefit.py`
 
 |details-start|
-References
+**References**
 |details-split|
 
 * Section 3.3 in Christopher M. Bishop: Pattern Recognition and Machine Learning, 2006
@@ -995,7 +995,7 @@ logistic regression, see also `log-linear model
    detrimental for unpenalized models since then the solution may not be unique, as shown in [16]_.
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 Let :math:`y_i \in {1, \ldots, K}` be the label (ordinal) encoded target variable for observation :math:`i`.
@@ -1085,7 +1085,7 @@ zero, is likely to be a underfit, bad model and you are advised to set
 ``fit_intercept=True`` and increase the ``intercept_scaling``.
 
 |details-start|
-Solvers' details
+**Solvers' details**
 |details-split|
 
 * The solver "liblinear" uses a coordinate descent (CD) algorithm, and relies
@@ -1251,7 +1251,7 @@ The choice of the distribution depends on the problem at hand:
 
 
 |details-start|
-Examples of use cases
+**Examples of use cases**
 |details-split|
 
 * Agriculture / weather modeling:  number of rain events per year (Poisson),
@@ -1321,7 +1321,7 @@ Usage example::
   * :ref:`sphx_glr_auto_examples_linear_model_plot_tweedie_regression_insurance_claims.py`
 
 |details-start|
-Practical considerations
+**Practical considerations**
 |details-split|
 
 The feature matrix `X` should be standardized before fitting. This ensures
@@ -1404,7 +1404,7 @@ For classification, :class:`PassiveAggressiveClassifier` can be used with
 ``loss='squared_epsilon_insensitive'`` (PA-II).
 
 |details-start|
-References
+**References**
 |details-split|
 
 * `"Online Passive-Aggressive Algorithms"
@@ -1527,7 +1527,7 @@ estimated only from the determined inliers.
   * :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py`
 
 |details-start|
-Details of the algorithm
+**Details of the algorithm**
 |details-split|
 
 Each iteration performs the following steps:
@@ -1558,7 +1558,7 @@ performance.
 |details-end|
 
 |details-start|
-References
+**References**
 |details-split|
 
 * https://en.wikipedia.org/wiki/RANSAC
@@ -1590,7 +1590,7 @@ better than an ordinary least squares in high dimension.
 
 
 |details-start|
-Theoretical considerations
+**Theoretical considerations**
 |details-split|
 
 :class:`TheilSenRegressor` is comparable to the :ref:`Ordinary Least Squares
@@ -1656,7 +1656,7 @@ but gives a lesser weight to them.
   * :ref:`sphx_glr_auto_examples_linear_model_plot_huber_vs_ridge.py`
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 The loss function that :class:`HuberRegressor` minimizes is given by
@@ -1738,7 +1738,7 @@ problem. The current implementation is based on
   * :ref:`sphx_glr_auto_examples_linear_model_plot_quantile_regression.py`
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 As a linear model, the :class:`QuantileRegressor` gives linear predictions
@@ -1771,7 +1771,7 @@ Somewhat in between is the :class:`HuberRegressor`.
 |details-end|
 
 |details-start|
-References
+**References**
 |details-split|
 
 * Koenker, R., & Bassett Jr, G. (1978). `Regression quantiles.
@@ -1801,7 +1801,7 @@ fast performance of linear methods, while allowing them to fit a much wider
 range of data.
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 For example, a simple linear regression can be extended by constructing

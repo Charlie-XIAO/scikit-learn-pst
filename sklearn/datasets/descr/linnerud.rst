@@ -19,7 +19,7 @@ twenty middle-aged men in a fitness club:
    Chins, Situps and Jumps.
 
 |details-start|
-References
+**References**
 |details-split|
 
 * Tenenhaus, M. (1998). La regression PLS: theorie et pratique. Paris:

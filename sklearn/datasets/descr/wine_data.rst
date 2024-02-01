@@ -74,7 +74,7 @@ Lichman, M. (2013). UCI Machine Learning Repository
 School of Information and Computer Science.
 
 |details-start|
-References
+**References**
 |details-split|
 
 (1) S. Aeberhard, D. Coomans and O. de Vel,

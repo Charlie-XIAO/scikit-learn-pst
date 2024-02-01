@@ -1,6 +1,6 @@
-:html_theme.sidebar_secondary.remove:
+.. Places parent toc into the sidebar
 
-.. include:: includes/big_toc_css.rst
+:parenttoc: True
 
 .. title:: User guide: contents
 
@@ -9,6 +9,12 @@
 ==========
 User Guide
 ==========
+
+.. include:: includes/big_toc_css.rst
+
+.. nice layout in the toc
+
+.. include:: tune_toc.rst
 
 .. toctree::
    :numbered:

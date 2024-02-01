@@ -62,7 +62,6 @@ extensions = [
     "sphinxcontrib.sass",
     "sphinx_remove_toctrees",
     # See sphinxext/
-    "add_api_pagetoc_functions",
     "add_toctree_functions",
     "allow_nan_estimators",
     "doi_role",
@@ -163,13 +162,7 @@ else:
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = [
-    "_build",
-    "templates",
-    "includes",
-    "themes",
-    "**/sg_execution_times.rst",
-]
+exclude_patterns = ["_build", "templates", "includes", "themes"]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -274,12 +267,9 @@ html_theme_options = {
     "footer_start": ["copyright"],
     "footer_center": [],
     "footer_end": [],
-    # Use :html_theme.sidebar_secondary.remove: metadata to remove secondary sidebar
-    # Use :use_api_page_toc: metadata to use API in-page toc style
-    "secondary_sidebar_items": ["sk-page-toc", "sourcelink"],
-    # The version warning banner is not informative enough so we inject our own; see
-    # `doc/js/scripts/version-switcher.js` for details
-    "show_version_warning_banner": False,
+    # Use :html_theme.sidebar_secondary.remove: for file-wide removal
+    "secondary_sidebar_items": ["page-toc", "sourcelink"],
+    "show_version_warning_banner": True,
     "announcement": [],
 }
 
@@ -313,16 +303,12 @@ html_static_path = ["images", "css", "js"]
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
-html_additional_pages = {"index": "index.html"}
-
-# Additional files to copy
-html_extra_path = ["versions.json"]
+# TODO: change to html_additional_pages = {"index": "index.html"} so that our landing
+# page template can override the one generated from index.rst
+html_additional_pages = {}
 
 # Additional JS files
-html_js_files = [
-    "scripts/details-permalink.js",
-    "scripts/version-switcher.js",
-]
+html_js_files = ["scripts/details-permalink.js"]
 
 # Compile scss files into css files using sphinxcontrib-sass
 sass_src_dir, sass_out_dir = "scss", "css/styles"
@@ -342,18 +328,7 @@ def add_js_css_files(app, pagename, templatename, context, doctree):
     should be used for the ones that are used by multiple pages. All page-specific
     JS and CSS files should be added here instead.
     """
-    if pagename == "faq":
-        app.add_css_file("styles/faq.css")
-    elif pagename == "index":
-        app.add_js_file("scripts/index.js")
-        app.add_css_file("styles/index.css")
-    elif pagename == "install":
-        app.add_js_file("scripts/install-instructions.js")
-        app.add_css_file("styles/install.css")
-    elif pagename.startswith("auto_examples/"):
-        app.add_js_file("scripts/tweak-gallery.js")
-    elif pagename.startswith("modules/generated/"):
-        app.add_css_file("styles/api.css")
+    return
 
 
 # If false, no module index is generated.
@@ -407,7 +382,6 @@ redirects = {
     "documentation": "index",
     "contents": "index",
     "preface": "index",
-    "modules/classes": "api/index",
     "auto_examples/feature_selection/plot_permutation_test_for_classification": (
         "auto_examples/model_selection/plot_permutation_tests_for_classification"
     ),
@@ -445,28 +419,20 @@ html_context["is_devrelease"] = parsed_version.is_devrelease
 html_show_search_summary = True
 
 
-# Customized dropdowns. The reason we do not use sphinx-design or sphinx-togglebutton
-# is that it does not collide with other sphinx-directives. The "summary-anchor" IDs
-# will be overwritten by `doc/js/scripts/details-permalink.js` to be unique. Styling
-# can be found in `doc/css/custom.scss`.
-rst_epilog = """
+# The "summary-anchor" IDs will be overwritten via JavaScript to be unique.
+# See `doc/js/scripts/details-permalink.js`.
+rst_prolog = """
 .. |details-start| raw:: html
 
-    <details class="sk-dropdown" id="summary-anchor">
-    <summary class="sk-summary-title">
-
-.. |details-warning-start| raw:: html
-
-    <details class="sk-dropdown warning" id="summary-anchor">
-    <summary class="sk-summary-title">
+    <details id="summary-anchor">
+    <summary class="btn btn-light">
 
 .. |details-split| raw:: html
 
-    <a class="headerlink" href="#summary-anchor" title="Link to this heading">#</a>
-    <div class="sk-summary-down"><i class="fa-solid fa-chevron-down"></i></div>
-    <div class="sk-summary-up"><i class="fa-solid fa-chevron-up"></i></div>
+    <span class="tooltiptext">Click for more details</span>
+    <a class="headerlink" href="#summary-anchor" title="Permalink to this heading">¶</a>
     </summary>
-    <div class="sk-dropdown-content">
+    <div class="card">
 
 .. |details-end| raw:: html
 
@@ -680,7 +646,7 @@ sphinx_gallery_conf = {
     "inspect_global_variables": False,
     "remove_config_comments": True,
     "plot_gallery": "True",
-    "recommender": {"enable": True, "n_examples": 4, "min_df": 12},
+    "recommender": {"enable": True, "n_examples": 5, "min_df": 12},
     "reset_modules": ("matplotlib", "seaborn", reset_sklearn_config),
 }
 if with_jupyterlite:
@@ -737,7 +703,7 @@ def filter_search_index(app, exception):
         f.write(searchindex_text)
 
 
-def generate_min_dependency_table():
+def generate_min_dependency_table(app):
     """Generate min dependency table for docs."""
     from sklearn._min_dependencies import dependent_packages
 
@@ -787,7 +753,7 @@ def generate_min_dependency_table():
         f.write(output)
 
 
-def generate_min_dependency_substitutions():
+def generate_min_dependency_substitutions(app):
     """Generate min dependency substitutions for docs."""
     from sklearn._min_dependencies import dependent_packages
 
@@ -801,103 +767,6 @@ def generate_min_dependency_substitutions():
     output = output.getvalue()
 
     with (Path(".") / "min_dependency_substitutions.rst").open("w") as f:
-        f.write(output)
-
-
-def generate_api_reference():
-    from sklearn._api_reference import (
-        API_REFERENCE,
-        DEPRECATED_API_REFERENCE,
-        get_api_reference_rst,
-        get_deprecated_api_reference_rst,
-    )
-
-    # Create the directory if it does not already exist
-    api_dir = Path(".") / "api"
-    api_dir.mkdir(exist_ok=True)
-
-    # Write API reference for each module
-    for module in API_REFERENCE:
-        with (api_dir / f"{module}.rst").open("w") as f:
-            f.write(get_api_reference_rst(module))
-
-    # Write the API reference index page
-    with (api_dir / "index.rst").open("w") as f:
-        f.write(":html_theme.sidebar_secondary.remove:\n\n")
-        f.write(".. _api_ref:\n\n")
-        f.write("=============\n")
-        f.write("API Reference\n")
-        f.write("=============\n\n")
-        f.write(
-            "This is the class and function reference of scikit-learn. Please refer to "
-            "the :ref:`full user guide <user_guide>` for further details, as the raw "
-            "specifications of classes and functions may not be enough to give full "
-            "guidelines on their uses. For reference on concepts repeated across the"
-            "API, see :ref:`glossary`.\n\n"
-        )
-
-        # Define the toctree
-        f.write(".. toctree::\n")
-        f.write("   :maxdepth: 2\n")
-        f.write("   :hidden:\n\n")
-        sorted_module_names = sorted(API_REFERENCE)
-        for module_name in sorted_module_names:
-            f.write(f"   {module_name}\n")
-        f.write("\n")
-
-        # Write the module table
-        f.write(".. list-table::\n\n")
-        for module_name in sorted_module_names:
-            f.write(f"   * - :mod:`{module_name}`\n")
-            f.write(f"     - {API_REFERENCE[module_name]['short_summary']}\n\n")
-
-        # Write deprecated API
-        f.write("Recently deprecated\n")
-        f.write("===================\n\n")
-        for depr_version in sorted(DEPRECATED_API_REFERENCE, key=parse, reverse=True):
-            f.write(get_deprecated_api_reference_rst(depr_version))
-
-
-def generate_index_rst():
-    """Generate index.rst to imply the overall structure of docs."""
-
-    # See https://github.com/scikit-learn/scikit-learn/pull/22550
-    development_link = (
-        "developers/index"
-        if parsed_version.is_devrelease
-        else "https://scikit-learn.org/dev/developers/index.html"
-    )
-
-    output = f"""
-.. title:: Index
-
-.. Define the overall structure, that affects the prev-next buttons and the order
-   of the sections in the top navbar.
-
-.. toctree::
-    :hidden:
-    :maxdepth: 2
-
-    Install <install>
-    user_guide
-    API <api/index>
-    auto_examples/index
-    Community <https://blog.scikit-learn.org/>
-    getting_started
-    Tutorials <tutorial/index>
-    whats_new
-    Glossary <glossary>
-    Development <{development_link}>
-    FAQ <faq>
-    support
-    related_projects
-    roadmap
-    Governance <governance>
-    about
-    Other Versions and Download <https://scikit-learn.org/dev/versions.html>
-"""
-
-    with (Path(".") / "index.rst").open("w") as f:
         f.write(output)
 
 
@@ -916,6 +785,8 @@ def setup(app):
     # do not run the examples when using linkcheck by using a small priority
     # (default priority is 500 and sphinx-gallery using builder-inited event too)
     app.connect("builder-inited", disable_plot_gallery_for_linkcheck, priority=50)
+    app.connect("builder-inited", generate_min_dependency_table)
+    app.connect("builder-inited", generate_min_dependency_substitutions)
 
     # triggered just before the HTML for an individual page is created
     app.connect("html-page-context", add_js_css_files)
@@ -1059,10 +930,3 @@ else:
     linkcheck_request_headers = {
         "https://github.com/": {"Authorization": f"token {github_token}"},
     }
-
-
-# Write the files in advance to avoid any potential conflict with other extensions
-generate_min_dependency_table()
-generate_min_dependency_substitutions()
-generate_api_reference()
-generate_index_rst()

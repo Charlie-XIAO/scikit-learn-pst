@@ -1,3 +1,7 @@
+.. Places parent toc into the sidebar
+
+:parenttoc: True
+
 .. _sample_generators:
 
 Generated datasets

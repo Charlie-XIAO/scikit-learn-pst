@@ -69,7 +69,7 @@ full covariance.
       density estimation.
 
 |details-start|
-Pros and cons of class GaussianMixture
+**Pros and cons of class GaussianMixture**
 |details-split|
 
 .. topic:: Pros:
@@ -96,7 +96,7 @@ Pros and cons of class GaussianMixture
 
 
 |details-start|
-Selecting the number of components in a classical Gaussian Mixture model
+**Selecting the number of components in a classical Gaussian Mixture model**
 |details-split|
 
 The BIC criterion can be used to select the number of components in a Gaussian
@@ -122,7 +122,7 @@ model.
 .. _expectation_maximization:
 
 |details-start|
-Estimation algorithm expectation-maximization
+**Estimation algorithm expectation-maximization**
 |details-split|
 
 The main difficulty in learning Gaussian mixture models from unlabeled
@@ -144,7 +144,7 @@ to a local optimum.
 |details-end|
 
 |details-start|
-Choice of the Initialization method
+**Choice of the Initialization method**
 |details-split|
 
 There is a choice of four initialization methods (as well as inputting user defined
@@ -293,7 +293,7 @@ from the two resulting mixtures.
       ``weight_concentration_prior``.
 
 |details-start|
-Pros and cons of variational inference with BayesianGaussianMixture
+**Pros and cons of variational inference with BayesianGaussianMixture**
 |details-split|
 
 .. topic:: Pros:

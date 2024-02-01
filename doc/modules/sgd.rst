@@ -250,7 +250,7 @@ with a large number of training samples (> 10,000) for which the SGD
 variant can be several orders of magnitude faster.
 
 |details-start|
-Mathematical details
+**Mathematical details**
 |details-split|
 
 Its implementation is based on the implementation of the stochastic
@@ -417,7 +417,7 @@ complexity; :math:`\alpha > 0` is a non-negative hyperparameter that controls
 the regularization strength.
 
 |details-start|
-Loss functions details
+**Loss functions details**
 |details-split|
 
 Different choices for :math:`L` entail different classifiers or regressors:

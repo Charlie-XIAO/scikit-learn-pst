@@ -80,7 +80,7 @@ is an estimator object::
     Pipeline(steps=[('reduce_dim', PCA()), ('clf', SVC())])
 
 |details-start|
-Shorthand version using :func:`make_pipeline`
+**Shorthand version using :func:`make_pipeline`**
 |details-split|
 
 The utility function :func:`make_pipeline` is a shorthand
@@ -109,7 +109,7 @@ permitted). This is convenient for performing only some of the transformations
     Pipeline(steps=[('clf', SVC())])
 
 |details-start|
-Accessing a step by name or position
+**Accessing a step by name or position**
 |details-split|
 
 A specific step can also be accessed by index or name by indexing (with ``[idx]``) the
@@ -150,7 +150,7 @@ pipeline slicing to get the feature names going into each step::
     array(['x2', 'x3'], ...)
 
 |details-start|
-Customize feature names
+**Customize feature names**
 |details-split|
 
 You can also provide custom feature names for the input data using
@@ -176,7 +176,7 @@ syntax::
     Pipeline(steps=[('reduce_dim', PCA()), ('clf', SVC(C=10))])
 
 |details-start|
-When does it matter?
+**When does it matter?**
 |details-split|
 
 This is particularly important for doing grid searches::
@@ -245,8 +245,8 @@ object::
     >>> # Clear the cache directory when you don't need it anymore
     >>> rmtree(cachedir)
 
-|details-warning-start|
-Warning: Side effect of caching transformers
+|details-start|
+**Warning: Side effect of caching transformers**
 |details-split|
 
 Using a :class:`Pipeline` without cache enabled, it is possible to

@@ -207,7 +207,7 @@ which introduces laziness into the feature extraction:
 tokens are only processed on demand from the hasher.
 
 |details-start|
-Implementation details
+**Implementation details**
 |details-split|
 
 :class:`FeatureHasher` uses the signed 32-bit variant of MurmurHash3.
@@ -310,7 +310,7 @@ counting in a single class::
 
 This model has many parameters, however the default values are quite
 reasonable (please see  the :ref:`reference documentation
-<feature_extraction_ref-from-text>` for the details)::
+<text_feature_extraction_ref>` for the details)::
 
   >>> vectorizer = CountVectorizer()
   >>> vectorizer
@@ -492,10 +492,10 @@ class::
   TfidfTransformer(smooth_idf=False)
 
 Again please see the :ref:`reference documentation
-<feature_extraction_ref-from-text>` for the details on all the parameters.
+<text_feature_extraction_ref>` for the details on all the parameters.
 
 |details-start|
-Numeric example of a tf-idf matrix
+**Numeric example of a tf-idf matrix**
 |details-split|
 
 Let's take an example with the following counts. The first term is present
@@ -647,7 +647,7 @@ or ``"replace"``. See the documentation for the Python function
 (type ``help(bytes.decode)`` at the Python prompt).
 
 |details-start|
-Troubleshooting decoding text
+**Troubleshooting decoding text**
 |details-split|
 
 If you are having trouble decoding text, here are some things to try:
@@ -885,7 +885,7 @@ The :class:`HashingVectorizer` also comes with the following limitations:
   required.
 
 |details-start|
-Performing out-of-core scaling with HashingVectorizer
+**Performing out-of-core scaling with HashingVectorizer**
 |details-split|
 
 An interesting development of using a :class:`HashingVectorizer` is the ability
@@ -946,7 +946,7 @@ parameters it is possible to derive from the class and override the
 factory methods instead of passing custom functions.
 
 |details-start|
-Tips and tricks
+**Tips and tricks**
 |details-split|
 
 Some tips and tricks:

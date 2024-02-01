@@ -1,12 +1,6 @@
 #!/usr/bin/env python3
 
-# Printout the historical version page and write the JSON for the version switcher
-
-# Version switcher see:
-# https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/version-dropdown.html
-# https://pydata-sphinx-theme.readthedocs.io/en/stable/user_guide/announcements.html#announcement-banners
-
-import argparse
+# List all available versions of the documentation
 import json
 import re
 import sys
@@ -58,13 +52,9 @@ def get_file_size(version):
             return human_readable_data_quantity(path_details["size"], 1000)
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--json-loc", type=str, required=True)
-args = parser.parse_args()
-
 print(":orphan:")
 print()
-heading = "Available documentation for scikit-learn"
+heading = "Available documentation for Scikit-learn"
 print(heading)
 print("=" * len(heading))
 print()
@@ -102,10 +92,9 @@ for src, dst in symlinks.items():
         dirs[src] = dirs[dst]
 
 # Output in order: dev, stable, decreasing other version
-seen, all_versions = set(), []
-for i, name in enumerate(
-    NAMED_DIRS
-    + sorted((k for k in dirs if k[:1].isdigit()), key=parse_version, reverse=True)
+seen = set()
+for name in NAMED_DIRS + sorted(
+    (k for k in dirs if k[:1].isdigit()), key=parse_version, reverse=True
 ):
     version_num, file_size = dirs[name]
     if version_num in seen:
@@ -113,20 +102,13 @@ for i, name in enumerate(
         continue
     else:
         seen.add(version_num)
-
-    full_name = f"{version_num}" if name[:1].isdigit() else f"{version_num} ({name})"
-    path = f"https://scikit-learn.org/{name}/"
-
-    # Update JSON for the version switcher; only keep the 8 latest versions to avoid
-    # overloading the version switcher dropdown
-    if i < 8:
-        info = {"name": full_name, "version": version_num, "url": path}
-        if name == "stable":
-            info["preferred"] = True
-        all_versions.append(info)
-
-    # Printout for the historical version page
-    out = f"* `scikit-learn {full_name} documentation <{path}>`_"
+    name_display = "" if name[:1].isdigit() else " (%s)" % name
+    path = "https://scikit-learn.org/%s/" % name
+    out = "* `Scikit-learn %s%s documentation <%s>`_" % (
+        version_num,
+        name_display,
+        path,
+    )
     if file_size is not None:
         file_extension = get_file_extension(version_num)
         out += (
@@ -134,6 +116,3 @@ for i, name in enumerate(
             f"_downloads/scikit-learn-docs.{file_extension}>`_)"
         )
     print(out)
-
-with open(args.json_loc, "w") as f:
-    json.dump(all_versions, f, indent=2)

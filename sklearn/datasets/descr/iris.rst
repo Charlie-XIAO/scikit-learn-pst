@@ -46,7 +46,7 @@ type of iris plant.  One class is linearly separable from the other 2; the
 latter are NOT linearly separable from each other.
 
 |details-start|
-References
+**References**
 |details-split|
 
 - Fisher, R.A. "The use of multiple measurements in taxonomic problems"

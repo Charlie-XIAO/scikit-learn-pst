@@ -155,7 +155,7 @@ See :ref:`svm_mathematical_formulation` for a complete description of
 the decision function.
 
 |details-start|
-Details on multi-class strategies
+**Details on multi-class strategies**
 |details-split|
 
 Note that the :class:`LinearSVC` also implements an alternative multi-class
@@ -539,7 +539,7 @@ classifiers, except that:
 
 
 |details-start|
-Using Python functions as kernels
+**Using Python functions as kernels**
 |details-split|
 
 You can use your own defined kernels by passing a function to the
@@ -563,7 +563,7 @@ instance that will use that kernel::
 
 
 |details-start|
-Using the Gram matrix
+**Using the Gram matrix**
 |details-split|
 
 You can pass pre-computed kernels by using the ``kernel='precomputed'``
@@ -689,7 +689,7 @@ term :math:`b`
     the relation between them is given as :math:`C = \frac{1}{alpha}`.
 
 |details-start|
-LinearSVC
+**LinearSVC**
 |details-split|
 
 The primal problem can be equivalently formulated as
@@ -710,7 +710,7 @@ cannot be applied. This is why only the linear kernel is supported by
 .. _nu_svc:
 
 |details-start|
-NuSVC
+**NuSVC**
 |details-split|
 
 The :math:`\nu`-SVC formulation [#7]_ is a reparameterization of the
@@ -774,7 +774,7 @@ holds the support vectors, and ``intercept_`` which holds the independent
 term :math:`b`
 
 |details-start|
-LinearSVR
+**LinearSVR**
 |details-split|
 
 The primal problem can be equivalently formulated as

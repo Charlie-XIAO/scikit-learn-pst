@@ -70,7 +70,7 @@ it is known to be a bad estimator, so the probability outputs from
 ``predict_proba`` are not to be taken too seriously.
 
 |details-start|
-References
+**References**
 |details-split|
 
 * H. Zhang (2004). `The optimality of Naive Bayes.
@@ -154,7 +154,7 @@ more stable than those for MNB. Further, CNB regularly outperforms MNB (often
 by a considerable margin) on text classification tasks.
 
 |details-start|
-Weights calculation
+**Weights calculation**
 |details-split|
 
 The procedure for calculating the weights is as follows:
@@ -185,7 +185,7 @@ match.
 |details-end|
 
 |details-start|
-References
+**References**
 |details-split|
 
 * Rennie, J. D., Shih, L., Teevan, J., & Karger, D. R. (2003).
@@ -225,7 +225,7 @@ might perform better on some datasets, especially those with shorter documents.
 It is advisable to evaluate both models, if time permits.
 
 |details-start|
-References
+**References**
 |details-split|
 
 * C.D. Manning, P. Raghavan and H. Schütze (2008). Introduction to
@@ -259,7 +259,7 @@ of X conditioned on the class y. The index set of the samples is defined as
 :math:`J = \{ 1, \dots, m \}`, with :math:`m` as the number of samples.
 
 |details-start|
-Probability calculation
+**Probability calculation**
 |details-split|
 
 The probability of category :math:`t` in feature :math:`i` given class
