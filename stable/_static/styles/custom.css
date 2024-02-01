@@ -1,0 +1,57 @@
+/**
+ * This is a general styling sheet.
+ * It should be used for customizations that affect multiple pages.
+ */
+/* Global */
+code.literal {
+  border: 0; }
+
+/* Primary sidebar */
+.bd-sidebar-primary {
+  width: 22.5%;
+  min-width: 16rem; }
+  .bd-sidebar-primary button.version-switcher__button {
+    margin-bottom: unset;
+    margin-left: 0.3rem;
+    font-size: 1rem; }
+  .bd-sidebar-primary nav.bd-links {
+    margin-right: -0.5rem; }
+
+/* Article content */
+.bd-article h1 {
+  font-weight: 500;
+  margin-bottom: 2rem; }
+
+.bd-article h2 {
+  font-weight: 500;
+  margin-bottom: 1.5rem; }
+
+.bd-article img {
+  height: unset !important;
+  padding: 1%; }
+
+.bd-article div.topic,
+.bd-article aside.topic {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none !important; }
+  .bd-article div.topic p,
+  .bd-article aside.topic p {
+    color: var(--pst-color-text-base) !important; }
+  .bd-article div.topic ul.simple,
+  .bd-article aside.topic ul.simple {
+    padding-left: 2rem; }
+
+/* scikit-learn buttons */
+a.btn.sk-btn-orange {
+  background-color: var(--sk-orange-tint-1);
+  color: black !important; }
+  a.btn.sk-btn-orange:hover {
+    background-color: var(--sk-orange-tint-3); }
+
+a.btn.sk-btn-cyan {
+  background-color: var(--sk-cyan-shades-2);
+  color: white !important; }
+  a.btn.sk-btn-cyan:hover {
+    background-color: var(--sk-cyan-shades-1); }

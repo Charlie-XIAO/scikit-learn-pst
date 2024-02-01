@@ -1,0 +1,1616 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="sklearn.metrics.explained_variance_score" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://scikit-learn/stable/modules/generated/sklearn.metrics.explained_variance_score.html" />
+<meta property="og:site_name" content="scikit-learn" />
+<meta property="og:image" content="https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png" />
+<meta property="og:image:alt" content="scikit-learn" />
+
+    <title>sklearn.metrics.explained_variance_score &#8212; scikit-learn 1.5.dev0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Vibur" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyterlite_sphinx.css?v=f996933d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/colors.css?v=d5680186" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/custom.css?v=92caad16" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=a2c36881"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=97f0b27d"></script>
+    <script src="../../_static/jupyterlite_sphinx.js?v=f09d7af2"></script>
+    <script data-domain="scikit-learn.org" defer="defer" src="https://views.scientific-python.org/js/script.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/generated/sklearn.metrics.explained_variance_score';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://charlie-xiao.github.io/assets/json/sklearn-versions-test.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '1.5.dev0';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner = true;
+        </script>
+    <script src="../../_static/scripts/details-permalink.js?v=b0ed9290"></script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="sklearn.metrics.max_error" href="sklearn.metrics.max_error.html" />
+    <link rel="prev" title="sklearn.metrics.zero_one_loss" href="sklearn.metrics.zero_one_loss.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-light" alt="scikit-learn homepage"/>
+    <script>document.write(`<img src="../../_static/scikit-learn-logo-small.png" class="logo__image only-dark" alt="scikit-learn homepage"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../classes.html">
+                        API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://blog.scikit-learn.org/">
+                        Community
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../getting_started.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../tutorial/index.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../whats_new.html">
+                        Release History
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../glossary.html">
+                        Glossary
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../faq.html">
+                        FAQ
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../support.html">
+                        Support
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../related_projects.html">
+                        Related Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../roadmap.html">
+                        Roadmap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../governance.html">
+                        Governance
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About us
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-external" href="https://scikit-learn.org/dev/versions.html">
+                        Other Versions and Download
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-2"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-2"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-2"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-2">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../install.html">
+                        Install
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../user_guide.html">
+                        User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../classes.html">
+                        API
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../auto_examples/index.html">
+                        Examples
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://blog.scikit-learn.org/">
+                        Community
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../getting_started.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../tutorial/index.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../whats_new.html">
+                        Release History
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../glossary.html">
+                        Glossary
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../developers/index.html">
+                        Development
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../faq.html">
+                        FAQ
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../support.html">
+                        Support
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../related_projects.html">
+                        Related Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../roadmap.html">
+                        Roadmap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../governance.html">
+                        Governance
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../about.html">
+                        About us
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-external" href="https://scikit-learn.org/dev/versions.html">
+                        Other Versions and Download
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/scikit-learn/scikit-learn" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <div class="version-switcher__container dropdown">
+    <button id="pst-version-switcher-button-3"
+      type="button"
+      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-haspopup="listbox"
+      aria-controls="pst-version-switcher-list-3"
+      aria-label="Version switcher list"
+    >
+      Choose version  <!-- this text may get changed later by javascript -->
+      <span class="caret"></span>
+    </button>
+    <div id="pst-version-switcher-list-3"
+      class="version-switcher__menu dropdown-menu list-group-flush py-0"
+      role="listbox" aria-labelledby="pst-version-switcher-button-3">
+      <!-- dropdown will be populated by javascript on page load -->
+    </div>
+  </div>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.config_context.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn</span></code>.config_context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.get_config.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn</span></code>.get_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.set_config.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn</span></code>.set_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.show_versions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn</span></code>.show_versions</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.BaseEstimator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.BaseEstimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.BiclusterMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.BiclusterMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.ClassifierMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.ClassifierMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.ClusterMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.ClusterMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.DensityMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.DensityMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.RegressorMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.RegressorMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.TransformerMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.TransformerMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.MetaEstimatorMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.MetaEstimatorMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.OneToOneFeatureMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.OneToOneFeatureMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.OutlierMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.OutlierMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.ClassNamePrefixFeaturesOutMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.ClassNamePrefixFeaturesOutMixin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectorMixin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectorMixin</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.clone.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.clone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.is_classifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.is_classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.base.is_regressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.base</span></code>.is_regressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.calibration.CalibratedClassifierCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.calibration</span></code>.CalibratedClassifierCV</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.calibration.calibration_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.calibration</span></code>.calibration_curve</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.AffinityPropagation.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.AffinityPropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.AgglomerativeClustering.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.AgglomerativeClustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.Birch.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.Birch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.DBSCAN.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.DBSCAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.HDBSCAN.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.HDBSCAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.FeatureAgglomeration.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.FeatureAgglomeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.KMeans.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.KMeans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.BisectingKMeans.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.BisectingKMeans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.MiniBatchKMeans.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.MiniBatchKMeans</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.MeanShift.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.MeanShift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.OPTICS.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.OPTICS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.SpectralClustering.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.SpectralClustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.SpectralBiclustering.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.SpectralBiclustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.SpectralCoclustering.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.SpectralCoclustering</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.affinity_propagation.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.affinity_propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.cluster_optics_dbscan.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.cluster_optics_dbscan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.cluster_optics_xi.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.cluster_optics_xi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.compute_optics_graph.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.compute_optics_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dbscan-function.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.dbscan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.estimate_bandwidth.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.estimate_bandwidth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.k_means.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.k_means</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.kmeans_plusplus.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.kmeans_plusplus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.mean_shift.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.mean_shift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.spectral_clustering.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.spectral_clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cluster.ward_tree.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cluster</span></code>.ward_tree</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.compose.ColumnTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.compose</span></code>.ColumnTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.compose.TransformedTargetRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.compose</span></code>.TransformedTargetRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.compose.make_column_transformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.compose</span></code>.make_column_transformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.compose.make_column_selector.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.compose</span></code>.make_column_selector</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.EmpiricalCovariance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.EmpiricalCovariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.EllipticEnvelope.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.EllipticEnvelope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.GraphicalLasso.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.GraphicalLasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.GraphicalLassoCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.GraphicalLassoCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.LedoitWolf.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.LedoitWolf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.MinCovDet.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.MinCovDet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.OAS.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.OAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.ShrunkCovariance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.ShrunkCovariance</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.empirical_covariance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.empirical_covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.graphical_lasso.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.graphical_lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.ledoit_wolf.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.ledoit_wolf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.ledoit_wolf_shrinkage.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.ledoit_wolf_shrinkage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oas-function.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.oas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.covariance.shrunk_covariance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.covariance</span></code>.shrunk_covariance</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cross_decomposition.CCA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cross_decomposition</span></code>.CCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cross_decomposition.PLSCanonical.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cross_decomposition</span></code>.PLSCanonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cross_decomposition.PLSRegression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cross_decomposition</span></code>.PLSRegression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.cross_decomposition.PLSSVD.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.cross_decomposition</span></code>.PLSSVD</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.clear_data_home.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.clear_data_home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.dump_svmlight_file.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.dump_svmlight_file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_20newsgroups.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_20newsgroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_20newsgroups_vectorized.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_20newsgroups_vectorized</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_california_housing.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_california_housing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_covtype.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_covtype</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_kddcup99.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_kddcup99</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_lfw_pairs.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_lfw_pairs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_lfw_people.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_lfw_people</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_olivetti_faces.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_olivetti_faces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_openml.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_openml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_rcv1.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_rcv1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.fetch_species_distributions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.fetch_species_distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.get_data_home.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.get_data_home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_breast_cancer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_breast_cancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_diabetes.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_diabetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_digits.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_digits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_files.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_iris.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_iris</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_linnerud.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_linnerud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_sample_image.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_sample_image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_sample_images.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_sample_images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_svmlight_file.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_svmlight_file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_svmlight_files.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_svmlight_files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.load_wine.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.load_wine</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_biclusters.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_biclusters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_blobs.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_blobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_checkerboard.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_checkerboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_circles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_circles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_classification.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_friedman1.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_friedman1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_friedman2.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_friedman2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_friedman3.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_friedman3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_gaussian_quantiles.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_gaussian_quantiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_hastie_10_2.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_hastie_10_2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_low_rank_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_low_rank_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_moons.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_moons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_multilabel_classification.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_multilabel_classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_regression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_s_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_s_curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_sparse_coded_signal.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_sparse_coded_signal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_sparse_spd_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_sparse_spd_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_sparse_uncorrelated.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_sparse_uncorrelated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_spd_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_spd_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.datasets.make_swiss_roll.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.datasets</span></code>.make_swiss_roll</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.DictionaryLearning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.DictionaryLearning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.FactorAnalysis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.FactorAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.FastICA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.FastICA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.IncrementalPCA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.IncrementalPCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.KernelPCA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.KernelPCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.LatentDirichletAllocation.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.LatentDirichletAllocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.MiniBatchDictionaryLearning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.MiniBatchDictionaryLearning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.MiniBatchSparsePCA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.MiniBatchSparsePCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.NMF.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.NMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.MiniBatchNMF.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.MiniBatchNMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.PCA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.PCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.SparsePCA.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.SparsePCA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.SparseCoder.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.SparseCoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.TruncatedSVD.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.TruncatedSVD</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.dict_learning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.dict_learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.dict_learning_online.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.dict_learning_online</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fastica-function.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.fastica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.non_negative_factorization.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.non_negative_factorization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.decomposition.sparse_encode.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.decomposition</span></code>.sparse_encode</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.discriminant_analysis.LinearDiscriminantAnalysis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.discriminant_analysis</span></code>.LinearDiscriminantAnalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.discriminant_analysis</span></code>.QuadraticDiscriminantAnalysis</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.dummy.DummyClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.dummy</span></code>.DummyClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.dummy.DummyRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.dummy</span></code>.DummyRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.AdaBoostClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.AdaBoostClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.AdaBoostRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.AdaBoostRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.BaggingClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.BaggingClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.BaggingRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.BaggingRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.ExtraTreesClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.ExtraTreesClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.ExtraTreesRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.ExtraTreesRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.GradientBoostingClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.GradientBoostingClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.GradientBoostingRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.GradientBoostingRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.IsolationForest.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.IsolationForest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.RandomForestClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.RandomForestClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.RandomForestRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.RandomForestRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.RandomTreesEmbedding.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.RandomTreesEmbedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.StackingClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.StackingClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.StackingRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.StackingRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.VotingClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.VotingClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.VotingRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.VotingRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.HistGradientBoostingRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.HistGradientBoostingRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.ensemble.HistGradientBoostingClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code>.HistGradientBoostingClassifier</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.ConvergenceWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.ConvergenceWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.DataConversionWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.DataConversionWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.DataDimensionalityWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.DataDimensionalityWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.EfficiencyWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.EfficiencyWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.FitFailedWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.FitFailedWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.InconsistentVersionWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.InconsistentVersionWarning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.NotFittedError.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.NotFittedError</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.exceptions.UndefinedMetricWarning.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.exceptions</span></code>.UndefinedMetricWarning</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.experimental.enable_iterative_imputer.html">sklearn.experimental.enable_iterative_imputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.experimental.enable_halving_search_cv.html">sklearn.experimental.enable_halving_search_cv</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.DictVectorizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction</span></code>.DictVectorizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.FeatureHasher.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction</span></code>.FeatureHasher</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.image.extract_patches_2d.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.image</span></code>.extract_patches_2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.image.grid_to_graph.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.image</span></code>.grid_to_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.image.img_to_graph.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.image</span></code>.img_to_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.image.reconstruct_from_patches_2d.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.image</span></code>.reconstruct_from_patches_2d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.image.PatchExtractor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.image</span></code>.PatchExtractor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.text.CountVectorizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.text</span></code>.CountVectorizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.text.HashingVectorizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.text</span></code>.HashingVectorizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.text.TfidfTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.text</span></code>.TfidfTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_extraction.text.TfidfVectorizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_extraction.text</span></code>.TfidfVectorizer</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.GenericUnivariateSelect.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.GenericUnivariateSelect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectPercentile.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectPercentile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectKBest.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectKBest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectFpr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectFpr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectFdr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectFdr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectFromModel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectFromModel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SelectFwe.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SelectFwe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.SequentialFeatureSelector.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.SequentialFeatureSelector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.RFE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.RFE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.RFECV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.RFECV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.VarianceThreshold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.VarianceThreshold</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.chi2.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.chi2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.f_classif.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.f_classif</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.f_regression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.f_regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.r_regression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.r_regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.mutual_info_classif.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.mutual_info_classif</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.feature_selection.mutual_info_regression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.feature_selection</span></code>.mutual_info_regression</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.GaussianProcessClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process</span></code>.GaussianProcessClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.GaussianProcessRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process</span></code>.GaussianProcessRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.CompoundKernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.CompoundKernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.ConstantKernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.ConstantKernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.DotProduct.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.DotProduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.ExpSineSquared.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.ExpSineSquared</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.Exponentiation.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.Exponentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.Hyperparameter.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.Hyperparameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.Kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.Matern.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.Matern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.PairwiseKernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.PairwiseKernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.Product.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.RBF.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.RBF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.RationalQuadratic.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.RationalQuadratic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.Sum.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.Sum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.gaussian_process.kernels.WhiteKernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.gaussian_process.kernels</span></code>.WhiteKernel</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.impute.SimpleImputer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.impute</span></code>.SimpleImputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.impute.IterativeImputer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.impute</span></code>.IterativeImputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.impute.MissingIndicator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.impute</span></code>.MissingIndicator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.impute.KNNImputer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.impute</span></code>.KNNImputer</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.inspection.partial_dependence.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.inspection</span></code>.partial_dependence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.inspection.permutation_importance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.inspection</span></code>.permutation_importance</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.inspection.DecisionBoundaryDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.inspection</span></code>.DecisionBoundaryDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.inspection.PartialDependenceDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.inspection</span></code>.PartialDependenceDisplay</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.isotonic.IsotonicRegression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.isotonic</span></code>.IsotonicRegression</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.isotonic.check_increasing.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.isotonic</span></code>.check_increasing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.isotonic.isotonic_regression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.isotonic</span></code>.isotonic_regression</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.kernel_approximation.AdditiveChi2Sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.kernel_approximation</span></code>.AdditiveChi2Sampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.kernel_approximation.Nystroem.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.kernel_approximation</span></code>.Nystroem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.kernel_approximation.PolynomialCountSketch.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.kernel_approximation</span></code>.PolynomialCountSketch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.kernel_approximation.RBFSampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.kernel_approximation</span></code>.RBFSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.kernel_approximation.SkewedChi2Sampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.kernel_approximation</span></code>.SkewedChi2Sampler</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.kernel_ridge.KernelRidge.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.kernel_ridge</span></code>.KernelRidge</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LogisticRegression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LogisticRegression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LogisticRegressionCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LogisticRegressionCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.PassiveAggressiveClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.PassiveAggressiveClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.Perceptron.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.Perceptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.RidgeClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.RidgeClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.RidgeClassifierCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.RidgeClassifierCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.SGDClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.SGDClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.SGDOneClassSVM.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.SGDOneClassSVM</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LinearRegression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LinearRegression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.Ridge.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.Ridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.RidgeCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.RidgeCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.SGDRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.SGDRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.ElasticNet.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.ElasticNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.ElasticNetCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.ElasticNetCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.Lars.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.Lars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LarsCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LarsCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.Lasso.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.Lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LassoCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LassoCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LassoLars.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LassoLars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LassoLarsCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LassoLarsCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.LassoLarsIC.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.LassoLarsIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.OrthogonalMatchingPursuit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.OrthogonalMatchingPursuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.OrthogonalMatchingPursuitCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.OrthogonalMatchingPursuitCV</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.ARDRegression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.ARDRegression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.BayesianRidge.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.BayesianRidge</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.MultiTaskElasticNet.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.MultiTaskElasticNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.MultiTaskElasticNetCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.MultiTaskElasticNetCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.MultiTaskLasso.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.MultiTaskLasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.MultiTaskLassoCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.MultiTaskLassoCV</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.HuberRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.HuberRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.QuantileRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.QuantileRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.RANSACRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.RANSACRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.TheilSenRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.TheilSenRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.PoissonRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.PoissonRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.TweedieRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.TweedieRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.GammaRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.GammaRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.PassiveAggressiveRegressor.html">sklearn.linear_model.PassiveAggressiveRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.enet_path.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.enet_path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.lars_path.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.lars_path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.lars_path_gram.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.lars_path_gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.lasso_path.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.lasso_path</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.orthogonal_mp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.orthogonal_mp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.orthogonal_mp_gram.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.orthogonal_mp_gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.linear_model.ridge_regression.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.ridge_regression</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.Isomap.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.Isomap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.LocallyLinearEmbedding.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.LocallyLinearEmbedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.MDS.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.MDS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.SpectralEmbedding.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.SpectralEmbedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.TSNE.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.TSNE</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.locally_linear_embedding.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.locally_linear_embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.smacof.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.smacof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.spectral_embedding.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.spectral_embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.manifold.trustworthiness.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.manifold</span></code>.trustworthiness</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.check_scoring.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.check_scoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.get_scorer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.get_scorer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.get_scorer_names.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.get_scorer_names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.make_scorer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.make_scorer</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.accuracy_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.accuracy_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.auc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.auc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.average_precision_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.average_precision_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.balanced_accuracy_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.balanced_accuracy_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.brier_score_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.brier_score_loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.class_likelihood_ratios.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.class_likelihood_ratios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.classification_report.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.classification_report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.cohen_kappa_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.cohen_kappa_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.confusion_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.confusion_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.dcg_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.dcg_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.det_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.det_curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.f1_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.f1_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.fbeta_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.fbeta_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.hamming_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.hamming_loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.hinge_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.hinge_loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.jaccard_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.jaccard_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.log_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.log_loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.matthews_corrcoef.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.matthews_corrcoef</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.multilabel_confusion_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.multilabel_confusion_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.ndcg_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.ndcg_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.precision_recall_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.precision_recall_curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.precision_recall_fscore_support.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.precision_recall_fscore_support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.precision_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.precision_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.recall_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.recall_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.roc_auc_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.roc_auc_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.roc_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.roc_curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.top_k_accuracy_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.top_k_accuracy_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.zero_one_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.zero_one_loss</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.explained_variance_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.max_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.max_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_absolute_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_squared_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_squared_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_squared_log_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_squared_log_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.median_absolute_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.median_absolute_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_absolute_percentage_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_absolute_percentage_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.r2_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.r2_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.root_mean_squared_log_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.root_mean_squared_log_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.root_mean_squared_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.root_mean_squared_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_poisson_deviance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_poisson_deviance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_gamma_deviance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_gamma_deviance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_tweedie_deviance.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_tweedie_deviance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.d2_tweedie_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.d2_tweedie_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mean_pinball_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mean_pinball_loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.d2_pinball_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.d2_pinball_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.d2_absolute_error_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.d2_absolute_error_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.coverage_error.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.coverage_error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.label_ranking_average_precision_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.label_ranking_average_precision_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.label_ranking_loss.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.label_ranking_loss</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.adjusted_mutual_info_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.adjusted_mutual_info_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.adjusted_rand_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.adjusted_rand_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.calinski_harabasz_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.calinski_harabasz_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.davies_bouldin_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.davies_bouldin_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.completeness_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.completeness_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.cluster.contingency_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.cluster</span></code>.contingency_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.cluster.pair_confusion_matrix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.cluster</span></code>.pair_confusion_matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.fowlkes_mallows_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.fowlkes_mallows_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.homogeneity_completeness_v_measure.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.homogeneity_completeness_v_measure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.homogeneity_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.homogeneity_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.mutual_info_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.mutual_info_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.normalized_mutual_info_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.normalized_mutual_info_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.rand_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.rand_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.silhouette_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.silhouette_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.silhouette_samples.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.silhouette_samples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.v_measure_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.v_measure_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.consensus_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.consensus_score</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.DistanceMetric.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.DistanceMetric</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.additive_chi2_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.additive_chi2_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.chi2_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.chi2_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.cosine_similarity.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.cosine_similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.cosine_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.cosine_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.distance_metrics.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.distance_metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.euclidean_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.euclidean_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.haversine_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.haversine_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.kernel_metrics.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.kernel_metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.laplacian_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.laplacian_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.linear_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.linear_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.manhattan_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.manhattan_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.nan_euclidean_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.nan_euclidean_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.pairwise_kernels.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.pairwise_kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.polynomial_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.polynomial_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.rbf_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.rbf_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.sigmoid_kernel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.sigmoid_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.paired_euclidean_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.paired_euclidean_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.paired_manhattan_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.paired_manhattan_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.paired_cosine_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.paired_cosine_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise.paired_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics.pairwise</span></code>.paired_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise_distances.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.pairwise_distances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise_distances_argmin.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.pairwise_distances_argmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise_distances_argmin_min.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.pairwise_distances_argmin_min</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.pairwise_distances_chunked.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.pairwise_distances_chunked</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.ConfusionMatrixDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.ConfusionMatrixDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.DetCurveDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.DetCurveDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.PrecisionRecallDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.PrecisionRecallDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.PredictionErrorDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.PredictionErrorDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.metrics.RocCurveDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.RocCurveDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.calibration.CalibrationDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.calibration</span></code>.CalibrationDisplay</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.mixture.BayesianGaussianMixture.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.mixture</span></code>.BayesianGaussianMixture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.mixture.GaussianMixture.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.mixture</span></code>.GaussianMixture</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.GroupKFold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.GroupKFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.GroupShuffleSplit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.GroupShuffleSplit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.KFold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.KFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.LeaveOneGroupOut.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.LeaveOneGroupOut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.LeavePGroupsOut.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.LeavePGroupsOut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.LeaveOneOut.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.LeaveOneOut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.LeavePOut.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.LeavePOut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.PredefinedSplit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.PredefinedSplit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.RepeatedKFold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.RepeatedKFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.RepeatedStratifiedKFold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.RepeatedStratifiedKFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.ShuffleSplit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.ShuffleSplit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.StratifiedKFold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.StratifiedKFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.StratifiedShuffleSplit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.StratifiedShuffleSplit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.StratifiedGroupKFold.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.StratifiedGroupKFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.TimeSeriesSplit.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.TimeSeriesSplit</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.check_cv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.check_cv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.train_test_split.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.train_test_split</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.GridSearchCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.GridSearchCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.HalvingGridSearchCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.HalvingGridSearchCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.ParameterGrid.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.ParameterGrid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.ParameterSampler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.ParameterSampler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.RandomizedSearchCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.RandomizedSearchCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.HalvingRandomSearchCV.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.HalvingRandomSearchCV</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.cross_validate.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.cross_validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.cross_val_predict.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.cross_val_predict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.cross_val_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.cross_val_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.learning_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.learning_curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.permutation_test_score.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.permutation_test_score</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.validation_curve.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.validation_curve</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.LearningCurveDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.LearningCurveDisplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.model_selection.ValidationCurveDisplay.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.ValidationCurveDisplay</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multiclass.OneVsRestClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multiclass</span></code>.OneVsRestClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multiclass.OneVsOneClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multiclass</span></code>.OneVsOneClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multiclass.OutputCodeClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multiclass</span></code>.OutputCodeClassifier</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multioutput.ClassifierChain.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multioutput</span></code>.ClassifierChain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multioutput.MultiOutputRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multioutput</span></code>.MultiOutputRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multioutput.MultiOutputClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multioutput</span></code>.MultiOutputClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.multioutput.RegressorChain.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.multioutput</span></code>.RegressorChain</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.naive_bayes.BernoulliNB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.naive_bayes</span></code>.BernoulliNB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.naive_bayes.CategoricalNB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.naive_bayes</span></code>.CategoricalNB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.naive_bayes.ComplementNB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.naive_bayes</span></code>.ComplementNB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.naive_bayes.GaussianNB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.naive_bayes</span></code>.GaussianNB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.naive_bayes.MultinomialNB.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.naive_bayes</span></code>.MultinomialNB</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.BallTree.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.BallTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.KDTree.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.KDTree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.KernelDensity.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.KernelDensity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.KNeighborsClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.KNeighborsClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.KNeighborsRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.KNeighborsRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.KNeighborsTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.KNeighborsTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.LocalOutlierFactor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.LocalOutlierFactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.RadiusNeighborsClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.RadiusNeighborsClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.RadiusNeighborsRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.RadiusNeighborsRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.RadiusNeighborsTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.RadiusNeighborsTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.NearestCentroid.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.NearestCentroid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.NearestNeighbors.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.NearestNeighbors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.NeighborhoodComponentsAnalysis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.NeighborhoodComponentsAnalysis</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.kneighbors_graph.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.kneighbors_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.radius_neighbors_graph.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.radius_neighbors_graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neighbors.sort_graph_by_row_values.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code>.sort_graph_by_row_values</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neural_network.BernoulliRBM.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neural_network</span></code>.BernoulliRBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neural_network.MLPClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neural_network</span></code>.MLPClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.neural_network.MLPRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.neural_network</span></code>.MLPRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.pipeline.FeatureUnion.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.pipeline</span></code>.FeatureUnion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.pipeline.Pipeline.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.pipeline</span></code>.Pipeline</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.pipeline.make_pipeline.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.pipeline</span></code>.make_pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.pipeline.make_union.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.pipeline</span></code>.make_union</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.Binarizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.Binarizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.FunctionTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.FunctionTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.KBinsDiscretizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.KBinsDiscretizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.KernelCenterer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.KernelCenterer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.LabelBinarizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.LabelBinarizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.LabelEncoder.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.LabelEncoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.MultiLabelBinarizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.MultiLabelBinarizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.MaxAbsScaler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.MaxAbsScaler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.MinMaxScaler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.MinMaxScaler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.Normalizer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.Normalizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.OneHotEncoder.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.OneHotEncoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.OrdinalEncoder.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.OrdinalEncoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.PolynomialFeatures.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.PolynomialFeatures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.PowerTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.PowerTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.QuantileTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.QuantileTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.RobustScaler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.RobustScaler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.SplineTransformer.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.SplineTransformer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.StandardScaler.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.StandardScaler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.TargetEncoder.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.TargetEncoder</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.add_dummy_feature.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.add_dummy_feature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.binarize.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.binarize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.label_binarize.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.label_binarize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.maxabs_scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.maxabs_scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.minmax_scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.minmax_scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.normalize.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.normalize</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.quantile_transform.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.quantile_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.robust_scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.robust_scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.preprocessing.power_transform.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code>.power_transform</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.random_projection.GaussianRandomProjection.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.random_projection</span></code>.GaussianRandomProjection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.random_projection.SparseRandomProjection.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.random_projection</span></code>.SparseRandomProjection</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.random_projection.johnson_lindenstrauss_min_dim.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.random_projection</span></code>.johnson_lindenstrauss_min_dim</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.semi_supervised.LabelPropagation.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.semi_supervised</span></code>.LabelPropagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.semi_supervised.LabelSpreading.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.semi_supervised</span></code>.LabelSpreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.semi_supervised.SelfTrainingClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.semi_supervised</span></code>.SelfTrainingClassifier</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.LinearSVC.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.LinearSVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.LinearSVR.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.LinearSVR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.NuSVC.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.NuSVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.NuSVR.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.NuSVR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.OneClassSVM.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.OneClassSVM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.SVC.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.SVC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.SVR.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.SVR</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.svm.l1_min_c.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.svm</span></code>.l1_min_c</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.DecisionTreeClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.DecisionTreeClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.DecisionTreeRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.DecisionTreeRegressor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.ExtraTreeClassifier.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.ExtraTreeClassifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.ExtraTreeRegressor.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.ExtraTreeRegressor</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.export_graphviz.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.export_graphviz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.export_text.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.export_text</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.tree.plot_tree.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.tree</span></code>.plot_tree</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.Bunch.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.Bunch</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.as_float_array.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.as_float_array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.assert_all_finite.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.assert_all_finite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.deprecated.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.deprecated</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.estimator_html_repr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.estimator_html_repr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.gen_batches.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.gen_batches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.gen_even_slices.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.gen_even_slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.indexable.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.indexable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.murmurhash3_32.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.murmurhash3_32</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.resample.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.resample</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils._safe_indexing.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>._safe_indexing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.safe_mask.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.safe_mask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.safe_sqr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.safe_sqr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.shuffle.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.shuffle</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.check_X_y.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.check_X_y</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.check_array.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.check_array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.check_scalar.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.check_scalar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.check_consistent_length.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.check_consistent_length</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.check_random_state.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.check_random_state</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.validation.check_is_fitted.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.validation</span></code>.check_is_fitted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.validation.check_memory.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.validation</span></code>.check_memory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.validation.check_symmetric.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.validation</span></code>.check_symmetric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.validation.column_or_1d.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.validation</span></code>.column_or_1d</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.validation.has_fit_parameter.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.validation</span></code>.has_fit_parameter</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.metaestimators.available_if.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.metaestimators</span></code>.available_if</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.class_weight.compute_class_weight.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.class_weight</span></code>.compute_class_weight</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.class_weight.compute_sample_weight.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.class_weight</span></code>.compute_sample_weight</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.multiclass.type_of_target.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.multiclass</span></code>.type_of_target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.multiclass.is_multilabel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.multiclass</span></code>.is_multilabel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.multiclass.unique_labels.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.multiclass</span></code>.unique_labels</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.extmath.safe_sparse_dot.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.extmath</span></code>.safe_sparse_dot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.extmath.randomized_range_finder.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.extmath</span></code>.randomized_range_finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.extmath.randomized_svd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.extmath</span></code>.randomized_svd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.extmath.fast_logdet.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.extmath</span></code>.fast_logdet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.extmath.density.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.extmath</span></code>.density</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.extmath.weighted_mode.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.extmath</span></code>.weighted_mode</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.incr_mean_variance_axis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.incr_mean_variance_axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.inplace_column_scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.inplace_column_scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.inplace_row_scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.inplace_row_scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.inplace_swap_row.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.inplace_swap_row</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.inplace_swap_column.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.inplace_swap_column</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.mean_variance_axis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.mean_variance_axis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs.inplace_csr_column_scale.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs</span></code>.inplace_csr_column_scale</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs_fast.inplace_csr_row_normalize_l1.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs_fast</span></code>.inplace_csr_row_normalize_l1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.sparsefuncs_fast.inplace_csr_row_normalize_l2.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.sparsefuncs_fast</span></code>.inplace_csr_row_normalize_l2</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.graph.single_source_shortest_path_length.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.graph</span></code>.single_source_shortest_path_length</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.random.sample_without_replacement.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.random</span></code>.sample_without_replacement</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.arrayfuncs.min_pos.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.arrayfuncs</span></code>.min_pos</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.metadata_routing.get_routing_for_object.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing</span></code>.get_routing_for_object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.metadata_routing.process_routing.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing</span></code>.process_routing</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.metadata_routing.MetadataRouter.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing</span></code>.MetadataRouter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.metadata_routing.MetadataRequest.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing</span></code>.MetadataRequest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.metadata_routing.MethodMapping.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.metadata_routing</span></code>.MethodMapping</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.discovery.all_estimators.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.discovery</span></code>.all_estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.discovery.all_displays.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.discovery</span></code>.all_displays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.discovery.all_functions.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.discovery</span></code>.all_functions</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.estimator_checks.check_estimator.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.estimator_checks</span></code>.check_estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.estimator_checks.parametrize_with_checks.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.estimator_checks</span></code>.parametrize_with_checks</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.parallel.delayed.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.parallel</span></code>.delayed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.parallel_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.parallel_backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.register_parallel_backend.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils</span></code>.register_parallel_backend</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sklearn.utils.parallel.Parallel.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.utils.parallel</span></code>.Parallel</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../classes.html" class="nav-link">API Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><code...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sklearn-metrics-explained-variance-score">
+<h1><a class="reference internal" href="../classes.html#module-sklearn.metrics" title="sklearn.metrics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code></a>.explained_variance_score<a class="headerlink" href="#sklearn-metrics-explained-variance-score" title="Link to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="sklearn.metrics.explained_variance_score">
+<span class="sig-prename descclassname"><span class="pre">sklearn.metrics.</span></span><span class="sig-name descname"><span class="pre">explained_variance_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multioutput</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'uniform_average'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_finite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/7656653/sklearn/metrics/_regression.py#L901"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sklearn.metrics.explained_variance_score" title="Link to this definition">#</a></dt>
+<dd><p>Explained variance regression score function.</p>
+<p>Best possible score is 1.0, lower values are worse.</p>
+<p>In the particular case when <code class="docutils literal notranslate"><span class="pre">y_true</span></code> is constant, the explained variance
+score is not finite: it is either <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (perfect predictions) or
+<code class="docutils literal notranslate"><span class="pre">-Inf</span></code> (imperfect predictions). To prevent such non-finite numbers to
+pollute higher-level experiments such as a grid search cross-validation,
+by default these cases are replaced with 1.0 (perfect predictions) or 0.0
+(imperfect predictions) respectively. If <code class="docutils literal notranslate"><span class="pre">force_finite</span></code>
+is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, this score falls back on the original <span class="math notranslate nohighlight">\(R^2\)</span>
+definition.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Explained Variance score is similar to the
+<a class="reference internal" href="sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">R^2</span> <span class="pre">score</span></code></a>, with the notable difference that it
+does not account for systematic offsets in the prediction. Most often
+the <a class="reference internal" href="sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><code class="xref py py-func docutils literal notranslate"><span class="pre">R^2</span> <span class="pre">score</span></code></a> should be preferred.</p>
+</div>
+<p>Read more in the <a class="reference internal" href="../model_evaluation.html#explained-variance-score"><span class="std std-ref">User Guide</span></a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>y_true</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>Ground truth (correct) target values.</p>
+</dd>
+<dt><strong>y_pred</strong><span class="classifier">array-like of shape (n_samples,) or (n_samples, n_outputs)</span></dt><dd><p>Estimated target values.</p>
+</dd>
+<dt><strong>sample_weight</strong><span class="classifier">array-like of shape (n_samples,), default=None</span></dt><dd><p>Sample weights.</p>
+</dd>
+<dt><strong>multioutput</strong><span class="classifier">{‘raw_values’, ‘uniform_average’, ‘variance_weighted’} or             array-like of shape (n_outputs,), default=’uniform_average’</span></dt><dd><p>Defines aggregating of multiple output scores.
+Array-like value defines weights used to average scores.</p>
+<dl class="simple">
+<dt>‘raw_values’ :</dt><dd><p>Returns a full set of scores in case of multioutput input.</p>
+</dd>
+<dt>‘uniform_average’ :</dt><dd><p>Scores of all outputs are averaged with uniform weight.</p>
+</dd>
+<dt>‘variance_weighted’ :</dt><dd><p>Scores of all outputs are averaged, weighted by the variances
+of each individual output.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>force_finite</strong><span class="classifier">bool, default=True</span></dt><dd><p>Flag indicating if <code class="docutils literal notranslate"><span class="pre">NaN</span></code> and <code class="docutils literal notranslate"><span class="pre">-Inf</span></code> scores resulting from constant
+data should be replaced with real numbers (<code class="docutils literal notranslate"><span class="pre">1.0</span></code> if prediction is
+perfect, <code class="docutils literal notranslate"><span class="pre">0.0</span></code> otherwise). Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>, a convenient setting
+for hyperparameters’ search procedures (e.g. grid search
+cross-validation).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.1.</span></p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>score</strong><span class="classifier">float or ndarray of floats</span></dt><dd><p>The explained variance or ndarray if ‘multioutput’ is ‘raw_values’.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="sklearn.metrics.r2_score.html#sklearn.metrics.r2_score" title="sklearn.metrics.r2_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">r2_score</span></code></a></dt><dd><p>Similar metric, but accounting for systematic offsets in prediction.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This is not a symmetric function.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">explained_variance_score</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explained_variance_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.957...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explained_variance_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">multioutput</span><span class="o">=</span><span class="s1">&#39;uniform_average&#39;</span><span class="p">)</span>
+<span class="go">0.983...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explained_variance_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explained_variance_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">force_finite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">nan</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explained_variance_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">explained_variance_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">force_finite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">-inf</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="clearer"></div></section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  <div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item">
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sklearn.metrics.zero_one_loss.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.zero_one_loss</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sklearn.metrics.max_error.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>.max_error</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+                </footer>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sklearn.metrics.explained_variance_score"><code class="docutils literal notranslate"><span class="pre">explained_variance_score</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../_sources/modules/generated/sklearn.metrics.explained_variance_score.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2007 - 2024, scikit-learn developers (BSD License).
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

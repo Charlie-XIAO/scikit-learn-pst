@@ -1,0 +1,154 @@
+
+:orphan:
+
+.. _sphx_glr_auto_examples_linear_model_sg_execution_times:
+
+
+Computation times
+=================
+**01:20.779** total execution time for 40 files **from auto_examples/linear_model**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_early_stopping.py` (``plot_sgd_early_stopping.py``)
+     - 00:24.956
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_poisson_regression_non_normal_loss.py` (``plot_poisson_regression_non_normal_loss.py``)
+     - 00:19.092
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_tweedie_regression_insurance_claims.py` (``plot_tweedie_regression_insurance_claims.py``)
+     - 00:08.139
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_comparison.py` (``plot_sgd_comparison.py``)
+     - 00:07.644
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sparse_logistic_regression_mnist.py` (``plot_sparse_logistic_regression_mnist.py``)
+     - 00:04.609
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sparse_logistic_regression_20newsgroups.py` (``plot_sparse_logistic_regression_20newsgroups.py``)
+     - 00:04.404
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_robust_fit.py` (``plot_robust_fit.py``)
+     - 00:01.769
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_model_selection.py` (``plot_lasso_model_selection.py``)
+     - 00:01.122
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_dense_vs_sparse_data.py` (``plot_lasso_dense_vs_sparse_data.py``)
+     - 00:00.768
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ard.py` (``plot_ard.py``)
+     - 00:00.687
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_coeffs.py` (``plot_ridge_coeffs.py``)
+     - 00:00.609
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_and_elasticnet.py` (``plot_lasso_and_elasticnet.py``)
+     - 00:00.577
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_theilsen.py` (``plot_theilsen.py``)
+     - 00:00.553
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_l1_l2_sparsity.py` (``plot_logistic_l1_l2_sparsity.py``)
+     - 00:00.507
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgdocsvm_vs_ocsvm.py` (``plot_sgdocsvm_vs_ocsvm.py``)
+     - 00:00.500
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.py` (``plot_elastic_net_precomputed_gram_matrix_with_weighted_samples.py``)
+     - 00:00.495
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_quantile_regression.py` (``plot_quantile_regression.py``)
+     - 00:00.483
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_polynomial_interpolation.py` (``plot_polynomial_interpolation.py``)
+     - 00:00.393
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ridge_path.py` (``plot_ridge_path.py``)
+     - 00:00.336
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ols_ridge_variance.py` (``plot_ols_ridge_variance.py``)
+     - 00:00.310
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_coordinate_descent_path.py` (``plot_lasso_coordinate_descent_path.py``)
+     - 00:00.275
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_multi_task_lasso_support.py` (``plot_multi_task_lasso_support.py``)
+     - 00:00.268
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_bayesian_ridge_curvefit.py` (``plot_bayesian_ridge_curvefit.py``)
+     - 00:00.255
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_omp.py` (``plot_omp.py``)
+     - 00:00.227
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_penalties.py` (``plot_sgd_penalties.py``)
+     - 00:00.227
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_multinomial.py` (``plot_logistic_multinomial.py``)
+     - 00:00.216
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ols_3d.py` (``plot_ols_3d.py``)
+     - 00:00.213
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_iris.py` (``plot_sgd_iris.py``)
+     - 00:00.133
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_loss_functions.py` (``plot_sgd_loss_functions.py``)
+     - 00:00.115
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_huber_vs_ridge.py` (``plot_huber_vs_ridge.py``)
+     - 00:00.115
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ransac.py` (``plot_ransac.py``)
+     - 00:00.107
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_logistic.py` (``plot_logistic.py``)
+     - 00:00.104
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_logistic_path.py` (``plot_logistic_path.py``)
+     - 00:00.093
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_lars_ic.py` (``plot_lasso_lars_ic.py``)
+     - 00:00.089
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_separating_hyperplane.py` (``plot_sgd_separating_hyperplane.py``)
+     - 00:00.081
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_nnls.py` (``plot_nnls.py``)
+     - 00:00.077
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_sgd_weighted_samples.py` (``plot_sgd_weighted_samples.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_lasso_lars.py` (``plot_lasso_lars.py``)
+     - 00:00.076
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_iris_logistic.py` (``plot_iris_logistic.py``)
+     - 00:00.044
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_linear_model_plot_ols.py` (``plot_ols.py``)
+     - 00:00.032
+     - 0.0

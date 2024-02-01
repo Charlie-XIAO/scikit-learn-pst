@@ -1,0 +1,13 @@
+/**
+ * This style sheet is for styling the FAQ page. Please do not include this style sheet
+ * in any other pages, since the selectors are designed based on the assuming the
+ * FAQ page structure. In particular, h3 headings are the questions.
+ */
+h3 {
+  background-color: var(--pst-color-surface);
+  color: var(--pst-color-on-surface) !important;
+  font-size: var(--pst-font-size-h6);
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  margin: 1.75rem -0.5rem 1.15rem -0.5rem;
+  border-radius: 0.5rem; }
